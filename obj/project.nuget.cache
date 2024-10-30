@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nkeur4da2lhOTROEiNG+Ik0qjdIzrV7ld1sat6KlZb38cbGcsFZIkJK5/+kLKY0ucNgvFZDCns/kR4apusV3Pg==",
+  "dgSpecHash": "/uxdfF/ozFUf/uJEuBWmmb98o814EsN/DXDotzfezo1ZVqlJ8y84BhL7LahuVCP2wl0CXYPDmUt0fjDpl8rRwQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bruna\\Desktop\\Bruna\\CURSO ASP.NET CORE\\NoteKeeper\\NoteKeeper\\NoteKeeper.csproj",
+  "projectFilePath": "C:\\Users\\Bruna\\Desktop\\Bruna\\API'S\\NoteKeeper\\NoteKeeper\\NoteKeeper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bruna\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Bruna\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
