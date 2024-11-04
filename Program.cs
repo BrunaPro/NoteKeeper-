@@ -1,3 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using NoteKeeper.Data;
+using NoteKeeper.Repository;
+using NoteKeeper.Repository.Interface;
+
 namespace NoteKeeper
 {
     public class Program
@@ -13,6 +19,17 @@ namespace NoteKeeper
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
+            builder.Services.AddDbContext<NoteSystemDBContext>(
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
+
+             builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+            builder.Services.AddScoped<INotesRepository, NotesRepository>();
+
+          
+            
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

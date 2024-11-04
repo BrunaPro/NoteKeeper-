@@ -11,6 +11,7 @@
         public DateTime updated_at { get; set;} = DateTime.Now;
         public DateTime delete_at { get; set; } = DateTime.Now; 
 
-        public string userId { get; set; }  
+        public string userId { get; set; }
+        public virtual UserModel? User { get; set; }
     }
 }
