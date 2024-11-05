@@ -2,13 +2,13 @@
 {
     public class NotesModel
     {
-        public int id { get; set; }
-        public string title { get; set; }
-        public string content { get; set; }
-        public DateTime created_at { get; set; } = DateTime.Now;
-        public DateTime updated_at { get; set;} = DateTime.Now;
-        public DateTime delete_at { get; set; } = DateTime.Now;
-        public int? userId { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public DateTime Created_at { get; set; } = DateTime.Now;
+        public DateTime Updated_at { get; set;} = DateTime.Now;
+        public DateTime Delete_at { get; set; } = DateTime.Now;
+        public int? UserId { get; set; }
         public virtual UserModel? User { get; set; }
     }
 }

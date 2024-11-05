@@ -24,11 +24,7 @@ namespace NoteKeeper
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
 
              builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-            builder.Services.AddScoped<INotesRepository, NotesRepository>();
-
-          
-            
+             builder.Services.AddScoped<INotesRepository, NotesRepository>();
             
             var app = builder.Build();
 
