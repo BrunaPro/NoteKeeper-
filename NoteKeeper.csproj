@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Map\" />
-    <Folder Include="Repository\" />
     <Folder Include="Views\" />
   </ItemGroup>
 
