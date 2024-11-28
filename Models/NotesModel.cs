@@ -1,6 +1,6 @@
 ﻿namespace NoteKeeper.Models
 {
-    public class NotesModels
+    public class NotesModel
     {
         public int id { get; set; }
         public string title { get; set; }
