@@ -8,6 +8,8 @@
 
         public string password { get; set; }
 
+        public ICollection<NotesModel> Notes { get; set; }
+
      
     }
 }

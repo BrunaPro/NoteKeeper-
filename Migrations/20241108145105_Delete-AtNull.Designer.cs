@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NoteKeeper.Data;
 
@@ -11,9 +12,10 @@ using NoteKeeper.Data;
 namespace NoteKeeper.Migrations
 {
     [DbContext(typeof(NoteSystemDBContext))]
-    partial class NoteSystemDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241108145105_Delete-AtNull")]
+    partial class DeleteAtNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

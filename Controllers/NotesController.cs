@@ -28,19 +28,27 @@ namespace NoteKeeper.Controllers
             return Ok(note);
         }
 
-        //seraching all notes by name 
+        //searching all notes by name 
         [HttpGet("title")]
         public async Task<ActionResult<NotesModel>> GettingByTitlle(string title)
         {
             NotesModel note = await _noteRepository.GettingByTitlle(title);
+            if (note == null)
+            {
+                return NotFound($"Note with title '{title}' not found.");
+            }
             return Ok(note);
         }
 
-        //seraching all notes by id
+        //searching all notes by id
         [HttpGet("id")]
         public async Task<ActionResult<NotesModel>> GettingById(int id)
         {
             NotesModel note = await _noteRepository.GettingById(id);
+            if (note == null)
+            {
+                return NotFound($"Note with id '{id}' not found.");
+            }
             return Ok(note);
         }
 
@@ -52,46 +60,29 @@ namespace NoteKeeper.Controllers
             return Ok(note);
         }
 
-        //change a note using id
-        [HttpPut("Update/{id}")]
+        //change a note by id
+        [HttpPut]
         public async Task<ActionResult<NotesModel>> Update([FromBody] NotesModel noteModel, int id)
         {
             var existingNote = await _noteRepository.GettingById(id);
             if (existingNote == null)
             {
-                return NotFound($"Note was not founde.");
+                return NotFound($"Note with id '{id}' not found."); 
             }
 
             
             existingNote.Title = noteModel.Title;
             existingNote.Content = noteModel.Content;
-            var updatedNote = await _noteRepository.Update(existingNote, id);
+            var updatedNote = await _noteRepository.Update(existingNote,id);
             return Ok(updatedNote);    
         }
 
-        // recovering a note using id
-        [HttpPut("recover/{id}")]
-        public async Task<ActionResult<NotesModel>> Recover(int id)
-        {
-            var note = await _noteRepository.Recover(id);
-
-            if (note == null)
-            {
-                return NotFound($"Note was not founde.");
-            }
-
-            note.Delete_at = DateTime.MinValue;
-            var updatedNote = await _noteRepository.Update(note, id);
-
-            return Ok(updatedNote);
-        }
-
         // deleting a note by id
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<ActionResult<NotesModel>> Delete(int id)
         {
 
-            bool delete = await _noteRepository.Delete(id);
+            var delete = await _noteRepository.Delete(id);  
             return Ok(delete);
         }
 

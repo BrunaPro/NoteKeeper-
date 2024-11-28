@@ -14,10 +14,7 @@ namespace NoteKeeper.Repository.Interface
 
         Task<NotesModel> Update(NotesModel note, int id);
 
-        Task<bool> Delete(int id);
-
-        Task<NotesModel> Recover(int id);
-       
+        Task<NotesModel> Delete(int id);
 
     } 
 }
