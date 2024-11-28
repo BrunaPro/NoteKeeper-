@@ -21,15 +21,26 @@ namespace NoteKeeper.Repository
             return await dBContext.Notes.ToListAsync();
         }
 
-        public async Task<NotesModel> GettingByTitlle(string titlle)
+        public async Task<NotesModel> GettingByTitlle(string title)
         {
             return await dBContext.Notes
            .Include(x => x.User)
-           .FirstOrDefaultAsync(x => x.title == titlle);
+           .FirstOrDefaultAsync(x => x.Title == title);
+        }
+
+        public async Task<NotesModel> GettingById(int id)
+        {
+            return await dBContext.Notes
+           .Include(x => x.User)
+           .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<NotesModel> Create(NotesModel note)
         {
+            note.Created_at = DateTime.Now; 
+            note.Updated_at = null;         
+            note.Delete_at = null;          
+
             await dBContext.Notes.AddAsync(note);
             await dBContext.SaveChangesAsync();
             return note;
@@ -43,38 +54,27 @@ namespace NoteKeeper.Repository
                 throw new Exception($"This note was not found");
             }
 
-            existingNote.title = note.title; 
-            existingNote.content = note.content;
-            existingNote.updated_at = DateTime.Now;
+            existingNote.Title = note.Title;
+            existingNote.Content = note.Content;
+            existingNote.Updated_at = DateTime.Now;  
 
             await dBContext.SaveChangesAsync();
             return existingNote;
         } 
 
-        public async Task<NotesModel> Recover(NotesModel note, int id)
-        {
-            var notee = await dBContext.Notes.FindAsync(id);
-            if (notee == null)
-            {
-                throw new Exception($"This note was not found");
-            }
-
-            note.delete_at = DateTime.Now;
-            await dBContext.SaveChangesAsync();
-            return notee;
-        }
-
-        public async Task<bool> Delete(int id)
+        public async Task<NotesModel> Delete(int id)
         {
             var note = await dBContext.Notes.FindAsync(id);
             if (note == null)
             {
-                return false; 
+
+                throw new Exception($"This note was not found");
             }
 
-            dBContext.Notes.Remove(note);
-            await dBContext.SaveChangesAsync();
-            return true; 
+            note.Delete_at = DateTime.Now;
+            dBContext.Notes.Remove(note); 
+            await dBContext.SaveChangesAsync(); 
+            return note;
         }
 
 

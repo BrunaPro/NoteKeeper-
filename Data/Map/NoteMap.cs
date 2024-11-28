@@ -8,12 +8,12 @@ namespace NoteKeeper.Data.Map
     {
        public void Configure(EntityTypeBuilder<NotesModel> builder)
         {
-            builder.HasKey(x => x.id);
+            builder.HasKey(x => x.Id);
 
-            builder.Property( x => x.title).IsRequired();
-            builder.Property(x => x.created_at).IsRequired();   
-            builder.Property(x => x.updated_at).IsRequired();
-            builder.Property(x => x.delete_at).IsRequired();
+            builder.Property( x => x.Title).IsRequired();
+            builder.Property(x => x.Created_at).IsRequired();   
+            builder.Property(x => x.Updated_at).IsRequired();
+            builder.Property(x => x.Delete_at).IsRequired();
 
         }
     }
