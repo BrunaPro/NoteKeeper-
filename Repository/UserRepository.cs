@@ -33,7 +33,7 @@ namespace NoteKeeper.Repository
             
             if (user == null)
             {
-                return null;
+                throw new Exception($"User by ID: {id} it was not found");
             }
 
             
